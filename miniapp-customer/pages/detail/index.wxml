@@ -1,0 +1,46 @@
+<view class="page" wx:if="{{product}}">
+  <image class="cover" wx:if="{{product.coverImage}}" src="{{product.coverImage}}" mode="aspectFill" />
+
+  <view class="head">
+    <view wx:if="{{product.bizTag}}" class="head-tag">
+      <t-tag size="small" theme="primary" variant="light">{{product.bizTag}}</t-tag>
+    </view>
+    <text class="head-name">{{product.name}}</text>
+    <text class="head-price price">¥{{product.price}}</text>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <text class="row-label">计量方式</text>
+      <text class="row-value">{{product.cardType === 1 ? '计次型' : '期限型'}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">{{product.cardType === 1 ? '可用次数' : '有效天数'}}</text>
+      <text class="row-value">{{product.cardType === 1 ? product.totalTimes + ' 次' : product.validDays + ' 天'}}</text>
+    </view>
+    <view class="row" wx:if="{{product.applicableService}}">
+      <text class="row-label">适用服务</text>
+      <text class="row-value">{{product.applicableService}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">状态</text>
+      <text class="row-value">{{product.status === 1 ? '在售' : '已售罄'}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{product.purchaseNotice}}">
+    <text class="card-title">购买须知</text>
+    <text class="notice">{{product.purchaseNotice}}</text>
+  </view>
+
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <t-button theme="primary" size="large" block disabled="{{product.status !== 1}}" bind:tap="buy">
+      {{product.status === 1 ? '立即购买' : '已售罄'}}
+    </t-button>
+  </view>
+</view>
+
+<view class="empty-wrap" wx:elif="{{!loading}}">
+  <t-empty icon="error-circle" description="卡不存在或已下架" />
+</view>

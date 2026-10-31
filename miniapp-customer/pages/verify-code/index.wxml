@@ -1,0 +1,22 @@
+<view class="screen">
+  <text class="tip">请店员扫码核销</text>
+
+  <view class="qr-box">
+    <canvas type="2d" id="qrcode" class="qr-canvas"></canvas>
+    <text class="token" wx:if="{{token}}">{{token}}</text>
+  </view>
+
+  <text class="hint">二维码 {{seconds}} 秒后失效，请勿截图分享</text>
+  <text class="hint bright">屏幕已调至最亮，离开本页自动恢复</text>
+
+  <view class="progress">
+    <view class="progress-inner" style="width: {{percent}}%;"></view>
+  </view>
+
+  <view class="manual">
+    <text class="manual-text">扫不上时，让店员输入上面的数字码</text>
+    <t-button theme="default" variant="outline" size="medium" loading="{{loading}}" bind:tap="refreshCode">
+      立即换码
+    </t-button>
+  </view>
+</view>

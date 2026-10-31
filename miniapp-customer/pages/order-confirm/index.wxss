@@ -1,0 +1,50 @@
+.info-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.info-price {
+  font-size: 34rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20rpx;
+  font-size: 28rpx;
+}
+
+/* open-type 只能用原生 button；做成文字链接，不强行占位 */
+.phone-btn {
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font-size: 28rpx;
+  line-height: inherit;
+  color: var(--brand);
+  background: transparent;
+}
+
+.phone-btn::after {
+  border: none;
+}
+
+.agree {
+  display: flex;
+  gap: 16rpx;
+  align-items: flex-start;
+  padding: 32rpx 8rpx;
+}
+
+.agree-text {
+  flex: 1;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.footer-bar t-button {
+  flex: 1;
+}

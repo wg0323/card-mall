@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "店员登录",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

@@ -1,0 +1,80 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  config:
+    # 本地凭据放 application-local.yml（不入版本库）；文件不存在也能启动，只是连库会失败
+    import: optional:classpath:application-local.yml
+  application:
+    name: card-mall-server
+  jackson:
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      # 图片上传：Spring 默认单文件 1MB，不调大必然失败
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/card_mall?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    # 账号密码不写在主配置：导入的 local 文件优先级更低，写在这里的空值会盖掉它
+    hikari:
+      maximum-pool-size: 20
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    database: 0
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+
+knife4j:
+  enable: true
+
+card-mall:
+  store-id: 1
+  # 签名密钥至少 32 字节，本地放 application-local.yml，测试放 application-test.yml
+  jwt:
+    secret: ${JWT_SECRET:}
+    # 双令牌：access 短有效期无状态，refresh 长有效期且 jti 存 Redis 可撤销
+    access-expire-seconds: 1800
+    refresh-expire-seconds: 43200
+  # 模拟支付与模拟微信登录只在本地/测试开启；默认关，避免开发期后门随 jar 上线
+  mock:
+    enabled: false
+  verify:
+    code-ttl-seconds: 60
+    max-times-per-verify: 10
+    # 防盗刷：fail-window 秒内连续 max-fail 次核销码无效就锁定 lock-seconds 秒
+    max-fail-times: 5
+    fail-window-seconds: 60
+    lock-seconds: 60
+    # 门店总闸门：多账号轮流试也会被这层拦住，阈值按“多名店员叠加”留出余量
+    max-fail-times-per-store: 30
+    store-lock-seconds: 120
+  # 图片存 MinIO：库里只存 objectKey，出参由 public-base 拼成访问地址
+  file:
+    endpoint: ${MINIO_ENDPOINT:}
+    access-key: ${MINIO_ACCESS_KEY:}
+    secret-key: ${MINIO_SECRET_KEY:}
+    bucket: card-mall
+    public-base: ${MINIO_PUBLIC_BASE:}
+    max-size-mb: 5
+  pay:
+    channel: mock
+  wx:
+    mock: false
+    app-id: ""
+    app-secret: ""

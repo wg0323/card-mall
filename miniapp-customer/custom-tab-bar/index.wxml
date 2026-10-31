@@ -1,0 +1,5 @@
+<t-tab-bar value="{{value}}" bordered="{{false}}" split="{{false}}" bind:change="onChange">
+  <t-tab-bar-item value="/pages/index/index" icon="home">首页</t-tab-bar-item>
+  <t-tab-bar-item value="/pages/cards/index" icon="coupon">卡包</t-tab-bar-item>
+  <t-tab-bar-item value="/pages/profile/index" icon="user">我的</t-tab-bar-item>
+</t-tab-bar>

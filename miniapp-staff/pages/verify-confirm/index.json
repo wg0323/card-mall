@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "核销确认",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-stepper": "tdesign-miniprogram/stepper/stepper",
+    "t-empty": "tdesign-miniprogram/empty/empty"
+  }
+}

@@ -1,0 +1,44 @@
+# 构建产物
+target/
+build/
+out/
+*.class
+*.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# 依赖与前端产物
+node_modules/
+dist/
+miniprogram_npm/
+unpackage/
+.pnpm-store/
+.webpack/
+
+# 本地配置（严禁入库）
+application-local.yml
+*.local.yml
+.env
+.env.local
+
+# IDE 与系统
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 日志
+logs/
+*.log
+
+# 工作区暂存（SDD 台账等）
+.superpowers/
+
+# 微信开发者工具本地私有配置（含本机 appid 与调试设置）
+project.private.config.json
+
+# 文档目录：只随代码分发截图资源 docs/images，其余设计与计划文档不入库
+docs/*
+!docs/images/
+.smoke/
+.vscode
+/server/src/main/resources/db

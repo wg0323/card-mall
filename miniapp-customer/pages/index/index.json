@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "XX 门店",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-empty": "tdesign-miniprogram/empty/empty",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "auth-gate": "/components/auth-gate/index"
+  }
+}

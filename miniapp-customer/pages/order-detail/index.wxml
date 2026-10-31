@@ -1,0 +1,42 @@
+<view class="page" wx:if="{{order}}">
+  <view class="card">
+    <view class="row">
+      <text class="row-label">订单号</text>
+      <text class="row-value">{{order.orderNo}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">卡名称</text>
+      <text class="row-value">{{order.productName}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">实付金额</text>
+      <text class="row-value price">¥{{order.amountText}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">支付状态</text>
+      <t-tag size="small" theme="{{order.payStatusTheme}}" variant="light">{{order.payStatusLabel}}</t-tag>
+    </view>
+    <view class="row">
+      <text class="row-label">支付渠道</text>
+      <text class="row-value">{{order.payChannel || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">支付时间</text>
+      <text class="row-value">{{order.paidTime || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">下单时间</text>
+      <text class="row-value">{{order.createTime}}</text>
+    </view>
+  </view>
+
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <t-button wx:if="{{order.payStatus === 0}}" theme="primary" size="large" block loading="{{paying}}" bind:tap="continuePay">
+      继续支付
+    </t-button>
+    <t-button wx:elif="{{order.payStatus === 1}}" theme="primary" size="large" block bind:tap="goCards">
+      查看我的卡
+    </t-button>
+  </view>
+</view>

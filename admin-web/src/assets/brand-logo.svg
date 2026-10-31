@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="次卡品牌标识">
+  <title>次卡品牌标识：带折角的卡 + 递减次数杠</title>
+  <!-- 卡片主体：横向卡比例（300x220），右下折角（票券与核销语义） -->
+  <path d="M152 146 H380 A36 36 0 0 1 416 182 V294 L344 366 H152 A36 36 0 0 1 116 330 V182 A36 36 0 0 1 152 146 Z"
+        fill="none" stroke="#16705A" stroke-width="24" stroke-linejoin="round"/>
+  <!-- 折角：实心填充，示意被撕下的卡角 -->
+  <path d="M344 366 L344 294 L416 294 Z"
+        fill="#16705A" stroke="#16705A" stroke-width="10" stroke-linejoin="round"/>
+  <!-- 三道递减金杠：剩余次数依次减少 -->
+  <g fill="#C8A45C">
+    <rect x="160" y="191" width="170" height="26" rx="13"/>
+    <rect x="160" y="243" width="118" height="26" rx="13"/>
+    <rect x="160" y="295" width="66"  height="26" rx="13"/>
+  </g>
+</svg>

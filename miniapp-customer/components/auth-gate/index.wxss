@@ -1,0 +1,70 @@
+.gate {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64rpx calc(120rpx + env(safe-area-inset-bottom));
+  background: var(--fill);
+}
+
+.gate-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  font-size: 48rpx;
+  font-weight: 600;
+  line-height: 128rpx;
+  color: var(--brand);
+  text-align: center;
+  background: var(--brand-light);
+  border-radius: 50%;
+}
+
+.gate-title {
+  margin-top: 32rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.gate-desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: var(--text-2);
+  text-align: center;
+}
+
+/* open-type 只能用原生 button；样式对齐设计文档的主按钮规范 */
+/* 原生 button 的行盒会让中文偏下，改用 flex 让文字在按钮内垂直居中 */
+.gate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88rpx;
+  margin-top: 56rpx;
+  font-size: 30rpx;
+  color: var(--surface);
+  background: var(--brand);
+  border-radius: var(--radius-pill);
+}
+
+.gate-btn::after {
+  border: none;
+}
+
+.gate-btn[disabled] {
+  color: var(--surface);
+  background: var(--brand-muted);
+}
+
+.gate-hint {
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+}

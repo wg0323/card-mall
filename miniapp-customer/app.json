@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/index",
+    "pages/order-confirm/index",
+    "pages/pay-result/index",
+    "pages/cards/index",
+    "pages/card-detail/index",
+    "pages/verify-code/index",
+    "pages/orders/index",
+    "pages/order-detail/index",
+    "pages/profile/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "XX 门店",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F6F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8A9199",
+    "selectedColor": "#16705A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/cards/index",
+        "text": "卡包"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

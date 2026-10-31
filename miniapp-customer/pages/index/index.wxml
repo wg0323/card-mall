@@ -1,0 +1,63 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">{{store.name || 'XX 门店'}}</text>
+    <text class="hero-sub">次卡 · 到店核销</text>
+  </view>
+
+  <view class="card store-card" wx:if="{{store}}">
+    <view class="store-head">
+      <view class="store-title">
+        <image class="store-logo" wx:if="{{store.logo}}" src="{{store.logo}}" mode="aspectFill" />
+        <text class="card-title">{{store.name}}</text>
+      </view>
+      <t-tag
+        wx:if="{{store.businessHours}}"
+        size="small"
+        theme="{{isOpen ? 'success' : 'default'}}"
+        variant="light"
+      >{{isOpen ? '营业中' : '休息中'}}</t-tag>
+    </view>
+    <text class="store-line" wx:if="{{store.businessHours}}">营业时间 {{store.businessHours}}</text>
+    <text class="store-line" wx:if="{{store.address}}">{{store.address}}</text>
+    <view class="store-actions">
+      <view class="store-action" hover-class="action-hover" bindtap="callStore">联系门店</view>
+      <view class="store-action" hover-class="action-hover" bindtap="openLocation">导航到店</view>
+    </view>
+  </view>
+
+  <view class="section-title">
+    <text>在售卡</text>
+  </view>
+
+  <view class="product-list" wx:if="{{products.length}}">
+    <view
+      class="product-card"
+      hover-class="card-hover"
+      wx:for="{{products}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="goDetail"
+    >
+      <image class="product-cover" wx:if="{{item.coverImage}}" src="{{item.coverImage}}" mode="aspectFill" />
+      <view class="product-main">
+        <view class="product-title">
+          <text class="product-name">{{item.name}}</text>
+          <t-tag wx:if="{{item.bizTag}}" size="small" theme="primary" variant="light">{{item.bizTag}}</t-tag>
+        </view>
+        <text class="product-desc">
+          {{item.cardType === 1 ? item.totalTimes + ' 次' : item.validDays + ' 天有效'}}
+        </text>
+      </view>
+      <view class="product-price">
+        <text class="price">¥{{item.price}}</text>
+        <text class="product-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-wrap" wx:else>
+    <t-empty icon="shop" description="{{loadError || '门店还没上架卡'}}" />
+  </view>
+</view>
+
+<auth-gate wx:if="{{needPhone}}" bind:success="onPhoneBound" />

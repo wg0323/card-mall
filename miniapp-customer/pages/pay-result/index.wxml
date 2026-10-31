@@ -1,0 +1,30 @@
+<view class="page result">
+  <view class="icon-wrap">
+    <t-icon
+      name="{{success ? 'check-circle-filled' : 'close-circle-filled'}}"
+      size="120rpx"
+      color="{{success ? 'var(--success)' : 'var(--danger)'}}"
+    />
+  </view>
+
+  <text class="result-title">{{success ? '支付成功' : '支付失败'}}</text>
+  <text class="result-amount price" wx:if="{{success && amount}}">¥{{amount}}</text>
+  <text class="result-desc">{{success ? cardName : '订单已创建，可稍后在订单里继续支付'}}</text>
+  <text class="result-order" wx:if="{{orderNo}}">订单号 {{orderNo}}</text>
+
+  <view class="actions">
+    <t-button theme="primary" size="large" block bind:tap="goCards">查看我的卡</t-button>
+    <t-button theme="default" size="large" block bind:tap="goHome">返回首页</t-button>
+    <t-button
+      wx:if="{{!success}}"
+      theme="primary"
+      variant="outline"
+      size="large"
+      block
+      loading="{{retrying}}"
+      bind:tap="retryPay"
+    >
+      重新支付
+    </t-button>
+  </view>
+</view>

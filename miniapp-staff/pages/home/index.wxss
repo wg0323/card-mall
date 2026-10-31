@@ -1,0 +1,95 @@
+.hero {
+  padding: 8rpx 8rpx 24rpx;
+}
+
+.hero-store {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.hero-sub {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.stat {
+  padding: 28rpx 32rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16rpx;
+}
+
+.stat-value {
+  font-size: 64rpx;
+  font-weight: 700;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+/* 主操作区占屏高 40% 以上，收银台单手能按到 */
+.scan-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  align-items: center;
+  justify-content: center;
+  height: 42vh;
+  margin-top: 24rpx;
+  color: var(--surface);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+  border: 1rpx solid var(--gold-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.scan-hover {
+  opacity: 0.9;
+}
+
+.scan-title {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.scan-hint {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+.actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 24rpx;
+}
+
+.action {
+  display: flex;
+  flex: 1;
+  gap: 8rpx;
+  align-items: center;
+  justify-content: center;
+  height: 104rpx;
+  font-size: 28rpx;
+  color: var(--brand);
+  background: var(--surface);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+.action-hover {
+  background: var(--brand-light);
+}

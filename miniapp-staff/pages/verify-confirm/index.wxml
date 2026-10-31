@@ -1,0 +1,54 @@
+<view class="page" wx:if="{{card}}">
+  <view class="card">
+    <view class="member-row">
+      <text class="member-name">{{card.memberNickname || '会员'}}</text>
+      <text class="muted">{{card.memberPhone || '未绑定手机号'}}</text>
+    </view>
+
+    <view class="face">
+      <text class="face-name">{{card.cardName}}</text>
+      <view class="face-times">
+        <text class="face-value">{{card.timesText}}</text>
+        <text class="face-unit">{{card.timesUnit}}</text>
+      </view>
+      <text class="face-valid">有效期至 {{card.validEnd}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row" wx:if="{{card.cardType === 1}}">
+      <view class="row-main">
+        <text class="row-title">本次扣减次数</text>
+        <text class="row-hint">扣后剩余 {{afterTimes}} 次</text>
+      </view>
+      <t-stepper value="{{times}}" min="1" max="{{card.maxTimes}}" theme="filled" bind:change="onTimesChange" />
+    </view>
+    <view class="row" wx:else>
+      <text class="row-title">期限卡</text>
+      <text class="muted">本次核销不扣次</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="card-title">备注</text>
+    <textarea
+      class="remark"
+      value="{{remark}}"
+      maxlength="200"
+      placeholder="选填，例如洗车两台"
+      bindinput="onRemarkInput"
+    />
+  </view>
+
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <t-button theme="primary" size="large" block="{{true}}" loading="{{submitting}}" bind:tap="confirm">确认核销</t-button>
+  </view>
+</view>
+
+<view class="page" wx:elif="{{!loading}}">
+  <view class="empty-wrap">
+    <t-empty description="{{loadError}}" />
+  </view>
+  <t-button theme="default" variant="outline" size="large" block="{{true}}" bind:tap="goHome">回首页重新扫码</t-button>
+</view>

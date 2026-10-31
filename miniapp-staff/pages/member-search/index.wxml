@@ -1,0 +1,64 @@
+<view class="page">
+  <view class="search-bar">
+    <input
+      class="search-input"
+      type="text"
+      confirm-type="search"
+      maxlength="11"
+      placeholder="输入会员手机号"
+      value="{{phone}}"
+      focus="{{inputFocus}}"
+      bindinput="onPhoneInput"
+      bindfocus="onInputFocus"
+      bindblur="onInputBlur"
+      bindconfirm="search"
+    />
+    <view
+      class="search-clear"
+      wx:if="{{phone}}"
+      hover-class="search-clear--hover"
+      bind:tap="clearPhone"
+    >
+      <t-icon name="close-circle-filled" size="40rpx" color="var(--text-3)" />
+    </view>
+  </view>
+
+  <block wx:if="{{member}}">
+    <view class="card" hover-class="card-hover" bind:tap="goDetail">
+      <view class="member-head">
+        <image class="member-avatar" wx:if="{{member.avatar}}" src="{{member.avatar}}" mode="aspectFill" />
+        <view class="member-avatar member-avatar-text" wx:else>{{member.nickname ? member.nickname[0] : '会'}}</view>
+        <view class="member-info">
+          <view class="member-row">
+            <text class="member-name">{{member.nickname || '会员'}}</text>
+            <view class="member-row-right">
+              <text class="muted">{{member.phone}}</text>
+              <t-icon name="chevron-right" size="32rpx" color="var(--text-3)" />
+            </view>
+          </view>
+          <text class="muted">注册时间 {{member.createTime}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card" wx:for="{{cards}}" wx:key="id">
+      <view class="card-head">
+        <text class="card-name">{{item.cardName}}</text>
+        <t-tag size="small" theme="{{item.statusTheme}}" variant="light">{{item.statusLabel}}</t-tag>
+      </view>
+      <view class="times-row">
+        <text class="times-value">{{item.timesText}}</text>
+        <text class="times-unit">{{item.timesUnit}}</text>
+      </view>
+      <text class="muted">有效期至 {{item.validEnd}}</text>
+    </view>
+
+    <view class="empty-wrap" wx:if="{{!cards.length}}">
+      <t-empty description="该会员还没有卡" />
+    </view>
+  </block>
+
+  <view class="empty-wrap" wx:elif="{{searched}}">
+    <t-empty icon="search" description="未找到该会员" />
+  </view>
+</view>

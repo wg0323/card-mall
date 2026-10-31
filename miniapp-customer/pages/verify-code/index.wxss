@@ -1,0 +1,78 @@
+/* 核销码页整页深底：截图与相机补光下更易扫码 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 48rpx 48rpx calc(48rpx + env(safe-area-inset-bottom));
+  background: var(--dark-bg);
+}
+
+.tip {
+  margin-bottom: 32rpx;
+  font-size: 30rpx;
+  color: var(--surface);
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+}
+
+.qr-canvas {
+  width: 440rpx;
+  height: 440rpx;
+}
+
+.token {
+  margin-top: 24rpx;
+  font-size: 24rpx;
+  color: var(--text-2);
+  letter-spacing: 2rpx;
+  font-variant-numeric: tabular-nums;
+}
+
+.hint {
+  margin-top: 32rpx;
+  font-size: 24rpx;
+  color: var(--surface);
+  opacity: 0.7;
+}
+
+/* 亮度提示紧跟倒计时，两行之间不需要一档间距 */
+.bright {
+  margin-top: 8rpx;
+}
+
+.progress {
+  width: 100%;
+  height: 6rpx;
+  margin-top: 16rpx;
+  background: rgb(255 255 255 / 16%);
+  border-radius: var(--radius-pill);
+}
+
+.progress-inner {
+  height: 100%;
+  background: var(--gold);
+  border-radius: var(--radius-pill);
+  transition: width 0.9s linear;
+}
+
+.manual {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  align-items: center;
+  margin-top: 64rpx;
+}
+
+.manual-text {
+  font-size: 24rpx;
+  color: var(--surface);
+  opacity: 0.6;
+}

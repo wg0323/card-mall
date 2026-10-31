@@ -1,0 +1,7 @@
+/* 自定义 tabBar 是独立组件，page 上定义的变量传不进来，这里只能用字面量。
+   改品牌色时同步 styles/theme.wxss，两处保持一致。 */
+:host {
+  --td-tab-bar-active-color: #16705a;
+  --td-tab-bar-bg-color: #ffffff;
+  --td-tab-bar-border-color: #e7e9ec;
+}

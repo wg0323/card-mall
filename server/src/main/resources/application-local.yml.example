@@ -1,0 +1,21 @@
+# 复制为 application-local.yml 后填写真实值。application-local.yml 已在 .gitignore 中，不会进版本库。
+spring:
+  datasource:
+    username: root
+    password: "数据库密码填这里"
+  redis:
+    password: ""
+
+card-mall:
+  wx:
+    # 本机没有可用 AppID 时保持 true：登录走 MockWxAuthClient
+    mock: true
+    app-id: "测试 AppID"
+    app-secret: "测试 AppSecret"
+  # 图片存储：本机 MinIO 默认 admin/12345678，桶由应用首次上传时自动创建
+  file:
+    endpoint: http://127.0.0.1:9000
+    access-key: "MinIO 账号"
+    secret-key: "MinIO 密码"
+    # 小程序真机调试时改成局域网 IP，并勾选不校验合法域名
+    public-base: http://127.0.0.1:9000

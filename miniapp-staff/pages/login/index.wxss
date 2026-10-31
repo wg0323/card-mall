@@ -1,0 +1,62 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 96rpx 48rpx calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.brand {
+  margin-bottom: 72rpx;
+}
+
+.brand-name {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 600;
+}
+
+.brand-sub {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: var(--text-3);
+}
+
+.form {
+  padding: 8rpx 32rpx;
+  margin-bottom: 48rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* 输入行 104rpx 高，热区够收银台单手点 */
+.field {
+  display: flex;
+  align-items: center;
+  height: 104rpx;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.field:last-child {
+  border-bottom: none;
+}
+
+.field-label {
+  flex: 0 0 128rpx;
+  font-size: 28rpx;
+  color: var(--text-2);
+}
+
+.field-input {
+  flex: 1;
+  font-size: 30rpx;
+}
+
+.tip {
+  display: block;
+  margin-top: 32rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+  text-align: center;
+}

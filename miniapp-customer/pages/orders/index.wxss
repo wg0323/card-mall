@@ -1,0 +1,43 @@
+.order-item {
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.item-hover {
+  opacity: 0.85;
+}
+
+.item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.item-body {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.item-amount {
+  font-size: 32rpx;
+}
+
+.empty-btn {
+  display: inline-block;
+  padding: 16rpx 48rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+  border: 1rpx solid var(--brand);
+  border-radius: var(--radius-pill);
+}

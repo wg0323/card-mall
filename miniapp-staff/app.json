@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/home/index",
+    "pages/records/index",
+    "pages/profile/index",
+    "pages/verify-confirm/index",
+    "pages/verify-result/index",
+    "pages/member-search/index",
+    "pages/member-detail/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "XX 门店 · 店员",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F6F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8A9199",
+    "selectedColor": "#16705A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "核销"
+      },
+      {
+        "pagePath": "pages/records/index",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

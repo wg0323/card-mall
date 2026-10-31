@@ -1,0 +1,80 @@
+<view class="page" wx:if="{{member}}">
+  <view class="card">
+    <view class="member-head">
+      <image class="member-avatar" wx:if="{{member.avatar}}" src="{{member.avatar}}" mode="aspectFill" />
+      <view class="member-avatar member-avatar-text" wx:else>{{member.nickname ? member.nickname[0] : '会'}}</view>
+      <view class="member-info">
+        <text class="member-name">{{member.nickname || '会员'}}</text>
+        <text class="muted">{{member.phone || '未绑定手机号'}}</text>
+      </view>
+    </view>
+
+    <view class="meta-row">
+      <text class="muted">注册时间</text>
+      <text class="meta-value">{{member.createTime}}</text>
+    </view>
+    <view class="meta-row">
+      <text class="muted">最近登录</text>
+      <text class="meta-value">{{member.lastLoginTime || '—'}}</text>
+    </view>
+  </view>
+
+  <!-- 两个列表都可能很长，用标签页分开，标签栏吸顶 -->
+  <view class="tabs">
+    <view
+      class="tab {{activeTab === 'cards' ? 'tab-active' : ''}}"
+      data-tab="cards"
+      bind:tap="switchTab"
+    >
+      持卡 {{cards.length}}
+    </view>
+    <view
+      class="tab {{activeTab === 'orders' ? 'tab-active' : ''}}"
+      data-tab="orders"
+      bind:tap="switchTab"
+    >
+      订单 {{orders.length}}
+    </view>
+  </view>
+
+  <block wx:if="{{activeTab === 'cards'}}">
+    <view class="card" wx:for="{{cards}}" wx:key="id">
+      <view class="card-head">
+        <text class="card-name">{{item.cardName}}</text>
+        <t-tag size="small" theme="{{item.statusTheme}}" variant="light">{{item.statusLabel}}</t-tag>
+      </view>
+      <view class="times-row">
+        <text class="times-value">{{item.timesText}}</text>
+        <text class="times-unit">{{item.timesUnit}}</text>
+      </view>
+      <text class="muted">有效期至 {{item.validEnd}}</text>
+      <text class="card-no muted">卡号 {{item.cardNo}}</text>
+    </view>
+
+    <view class="empty-wrap" wx:if="{{!cards.length}}">
+      <t-empty description="该会员还没有卡" />
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="card" wx:for="{{orders}}" wx:key="id">
+      <view class="card-head">
+        <text class="card-name">{{item.productName}}</text>
+        <t-tag size="small" theme="{{item.statusTheme}}" variant="light">{{item.statusLabel}}</t-tag>
+      </view>
+      <view class="order-row">
+        <text class="price">¥{{item.amountText}}</text>
+        <text class="muted">{{item.createTimeText}}</text>
+      </view>
+      <text class="card-no muted">订单号 {{item.orderNo}}</text>
+    </view>
+
+    <view class="empty-wrap" wx:if="{{!orders.length}}">
+      <t-empty description="该会员还没有订单" />
+    </view>
+  </block>
+</view>
+
+<view class="empty-wrap" wx:elif="{{!loading}}">
+  <t-empty icon="search" description="未找到该会员" />
+</view>

@@ -1,0 +1,39 @@
+<view class="page">
+  <view class="profile">
+    <view class="avatar-wrap">
+      <image class="avatar" wx:if="{{member.avatar}}" src="{{member.avatar}}" mode="aspectFill" />
+      <view class="avatar avatar-default" wx:else>{{member.nickname ? member.nickname[0] : '客'}}</view>
+      <!-- 原生 button 的盒子尺寸不受控，只让它做一层透明可点区域，圆形交给上面的 view 画 -->
+      <button
+        class="avatar-hit"
+        open-type="chooseAvatar"
+        hover-class="none"
+        bind:chooseavatar="onChooseAvatar"
+      ></button>
+    </view>
+    <view class="profile-info">
+      <input
+        class="profile-name-input"
+        type="nickname"
+        value="{{member.nickname}}"
+        maxlength="32"
+        placeholder="填写昵称"
+        placeholder-class="profile-placeholder"
+        bindblur="onNicknameBlur"
+      />
+      <text class="profile-phone">{{member.phone || '未绑定手机号'}}</text>
+    </view>
+  </view>
+
+  <view class="card menu">
+    <t-cell-group>
+      <t-cell title="我的卡包" arrow hover bind:click="goCards" />
+      <t-cell title="我的订单" arrow hover bind:click="goOrders" />
+      <t-cell title="联系门店" arrow hover bind:click="callStore" />
+    </t-cell-group>
+  </view>
+
+  <text class="brand-note">{{brandName}} · 到店出示核销码即可扣次</text>
+</view>
+
+<auth-gate wx:if="{{needPhone}}" bind:success="onPhoneBound" />

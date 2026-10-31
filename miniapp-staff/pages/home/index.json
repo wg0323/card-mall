@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "扫码核销",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
+}

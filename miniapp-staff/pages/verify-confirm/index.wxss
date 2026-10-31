@@ -1,0 +1,88 @@
+.member-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.member-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.face {
+  padding: 32rpx;
+  color: var(--surface);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+  border: 1rpx solid var(--gold-line);
+  border-radius: var(--radius-card);
+}
+
+.face-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+/* 剩余次数是全页最显眼的元素，减少误扣 */
+.face-times {
+  display: flex;
+  align-items: baseline;
+  margin: 16rpx 0 8rpx;
+}
+
+.face-value {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.face-unit {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: var(--surface);
+  opacity: 0.6;
+}
+
+.face-valid {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.row-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.row-hint {
+  font-size: 24rpx;
+  color: var(--brand);
+}
+
+.remark {
+  width: 100%;
+  height: 140rpx;
+  padding: 20rpx;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  background: var(--fill);
+  border-radius: 16rpx;
+}
+
+/* 底部只有一个按钮，撑满整行，收银台单手好按 */
+.footer-bar t-button {
+  flex: 1;
+}

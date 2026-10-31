@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "核销成功",
+  "usingComponents": {
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

@@ -1,0 +1,28 @@
+<view class="screen">
+  <view class="result">
+    <t-icon name="check-circle" size="140rpx" color="var(--success)" />
+    <text class="title">核销成功</text>
+    <text class="card-name">{{cardName}}</text>
+  </view>
+
+  <view class="summary">
+    <view class="summary-row">
+      <text class="muted">本次核销</text>
+      <text class="summary-value">{{timesText}}</text>
+    </view>
+    <view class="summary-row" wx:if="{{remainingText}}">
+      <text class="muted">卡内余次</text>
+      <text class="summary-value">{{remainingText}}</text>
+    </view>
+    <view class="summary-row">
+      <text class="muted">核销时间</text>
+      <text>{{verifyTime}}</text>
+    </view>
+  </view>
+
+  <text class="used-up" wx:if="{{usedUp}}">该卡已用完，可引导顾客续卡</text>
+
+  <view class="footer">
+    <t-button theme="primary" size="large" block="{{true}}" bind:tap="continueScan">继续核销</t-button>
+  </view>
+</view>

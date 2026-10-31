@@ -1,0 +1,42 @@
+<view class="page" wx:if="{{card}}">
+  <view class="face">
+    <view class="face-head">
+      <text class="face-name">{{card.cardName}}</text>
+      <t-tag size="small" theme="{{card.statusTheme}}" variant="light">{{card.statusLabel}}</t-tag>
+    </view>
+    <view class="face-times">
+      <text class="face-value">{{card.timesText}}</text>
+      <text class="face-unit">{{card.timesUnit}}</text>
+    </view>
+    <text class="face-valid">有效期至 {{card.validEnd}}</text>
+    <text class="face-no">卡号 **** {{card.cardNoTail}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">使用记录</text>
+    <view class="timeline" wx:if="{{records.length}}">
+      <view class="tl-item" wx:for="{{records}}" wx:key="id">
+        <view class="tl-dot {{item.revoked ? 'tl-dot-revoked' : ''}}"></view>
+        <view class="tl-body">
+          <view class="tl-row">
+            <text class="tl-title">{{item.verifyTimes}} 次核销</text>
+            <text class="tl-time muted">{{item.verifyTime}}</text>
+          </view>
+          <text class="tl-desc">
+            核销后余 {{item.remainingAfter}} 次{{item.remark ? ' · ' + item.remark : ''}}{{item.revoked ? ' · 已撤销' : ''}}
+          </text>
+        </view>
+      </view>
+    </view>
+    <view class="empty-wrap" wx:else>
+      <t-empty description="还没有使用记录" />
+    </view>
+  </view>
+
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <t-button theme="primary" size="large" block disabled="{{!usable}}" bind:tap="showCode">
+      {{usable ? '出示核销码' : unusableReason}}
+    </t-button>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="tabs">
+    <view
+      class="tab {{activeIndex === index ? 'tab-active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="status"
+      data-index="{{index}}"
+      bindtap="switchTab"
+    >
+      {{item.label}}
+    </view>
+  </view>
+
+  <view class="list" wx:if="{{list.length}}">
+    <view
+      class="card-item"
+      hover-class="card-hover"
+      wx:for="{{list}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="goDetail"
+    >
+      <view class="item-head">
+        <text class="item-name">{{item.cardName}}</text>
+        <t-tag size="small" theme="{{item.statusTheme}}" variant="light">{{item.statusLabel}}</t-tag>
+      </view>
+      <view class="item-times">
+        <text class="times-value">{{item.timesText}}</text>
+        <text class="times-unit">{{item.timesUnit}}</text>
+      </view>
+      <text class="item-valid muted">有效期至 {{item.validEnd}}</text>
+    </view>
+  </view>
+
+  <view class="empty-wrap" wx:elif="{{!loading}}">
+    <t-empty description="这个分类下还没有卡">
+      <view class="empty-btn" bindtap="goHome">去首页看看</view>
+    </t-empty>
+  </view>
+</view>
+
+<auth-gate wx:if="{{needPhone}}" bind:success="onPhoneBound" />

@@ -1,0 +1,63 @@
+@import './styles/theme.wxss';
+
+page {
+  background: var(--fill);
+  color: var(--text-1);
+  font-size: 28rpx;
+  line-height: 1.5;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.page {
+  padding: 24rpx 32rpx 48rpx;
+}
+
+/* 卡片：白底 + 24rpx 圆角 + 一档阴影，与设计文档第 11 节一致 */
+.card {
+  padding: 32rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card + .card {
+  margin-top: 24rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--text-3);
+  font-size: 24rpx;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 底部固定操作栏，统一留安全区 */
+.footer-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 24rpx;
+  align-items: center;
+  padding: 16rpx 32rpx calc(16rpx + env(safe-area-inset-bottom));
+  background: var(--surface);
+  box-shadow: 0 -4rpx 16rpx rgb(16 24 40 / 6%);
+}
+
+.footer-placeholder {
+  height: calc(140rpx + env(safe-area-inset-bottom));
+}
+
+.empty-wrap {
+  padding: 96rpx 0;
+}

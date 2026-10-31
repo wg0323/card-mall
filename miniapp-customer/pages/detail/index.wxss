@@ -1,0 +1,60 @@
+.cover {
+  display: block;
+  width: 100%;
+  height: 360rpx;
+  margin: 24rpx 0;
+  border-radius: var(--radius-card);
+}
+
+.head {
+  padding: 24rpx 8rpx 40rpx;
+}
+
+.head-tag {
+  margin-bottom: 16rpx;
+}
+
+.head-name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.head-price {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 56rpx;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+}
+
+.row + .row {
+  border-top: 1rpx solid var(--line);
+}
+
+.row-label {
+  color: var(--text-3);
+}
+
+.row-value {
+  max-width: 60%;
+  color: var(--text-1);
+  text-align: right;
+}
+
+.notice {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+.footer-bar t-button {
+  flex: 1;
+}

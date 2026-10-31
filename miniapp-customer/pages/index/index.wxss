@@ -1,0 +1,141 @@
+.hero {
+  padding: 16rpx 8rpx 32rpx;
+}
+
+.hero-title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 600;
+}
+
+.hero-sub {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.store-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.store-title {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+  min-width: 0;
+}
+
+.store-logo {
+  flex: none;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+}
+
+.store-line {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-2);
+}
+
+.store-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 24rpx;
+}
+
+.store-action {
+  flex: 1;
+  height: 72rpx;
+  font-size: 26rpx;
+  line-height: 72rpx;
+  color: var(--brand);
+  text-align: center;
+  background: var(--brand-light);
+  border-radius: var(--radius-pill);
+}
+
+.action-hover {
+  opacity: 0.7;
+}
+
+.section-title {
+  margin: 40rpx 8rpx 24rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+/* 卡券列表统一单列，整行展示：左侧名称与信息，右侧价格 */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card-hover {
+  opacity: 0.85;
+}
+
+.product-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.product-cover {
+  flex: none;
+  width: 96rpx;
+  height: 96rpx;
+  margin-right: 24rpx;
+  border-radius: var(--radius-card);
+}
+
+.product-title {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.product-name {
+  overflow: hidden;
+  font-size: 30rpx;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.product-price {
+  display: flex;
+  flex: none;
+  gap: 8rpx;
+  align-items: baseline;
+}
+
+.product-price .price {
+  font-size: 36rpx;
+}
+
+.product-arrow {
+  font-size: 32rpx;
+  color: var(--text-3);
+}

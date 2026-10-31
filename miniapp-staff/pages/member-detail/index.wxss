@@ -1,0 +1,124 @@
+/* 会员卡片样式与 member-search 保持一致 */
+.member-head {
+  display: flex;
+  gap: 24rpx;
+  align-items: center;
+}
+
+.member-avatar {
+  flex: none;
+  display: block;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+}
+
+/* 没有头像时用昵称首字占位 */
+.member-avatar-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.member-name {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+  border-top: 1rpx solid var(--line);
+}
+
+.meta-value {
+  font-size: 26rpx;
+  color: var(--text-2);
+}
+
+/* 标签栏吸顶：两个列表都可能很长，滚到中间也能切 */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  gap: 16rpx;
+  padding: 8rpx;
+  margin: 24rpx 0;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.tab {
+  flex: 1;
+  height: 72rpx;
+  font-size: 26rpx;
+  line-height: 72rpx;
+  color: var(--text-2);
+  text-align: center;
+  border-radius: var(--radius-pill);
+}
+
+.tab-active {
+  color: var(--surface);
+  background: var(--brand);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.times-row {
+  display: flex;
+  align-items: baseline;
+  margin: 12rpx 0 4rpx;
+}
+
+.times-value {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.times-unit {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.order-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 12rpx 0 4rpx;
+}
+
+.order-row .price {
+  font-size: 36rpx;
+}
+
+.card-no {
+  display: block;
+  margin-top: 8rpx;
+}

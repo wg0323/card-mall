@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "会员查询",
+  "usingComponents": {
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-empty": "tdesign-miniprogram/empty/empty"
+  }
+}

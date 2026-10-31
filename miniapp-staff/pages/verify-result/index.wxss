@@ -1,0 +1,66 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 80rpx 48rpx calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  align-items: center;
+  padding: 48rpx 0 40rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.card-name {
+  font-size: 28rpx;
+  color: var(--text-2);
+}
+
+.summary {
+  padding: 8rpx 32rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-value {
+  font-weight: 600;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.used-up {
+  display: block;
+  padding: 24rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
+  color: var(--warning);
+  text-align: center;
+  background: var(--gold-light);
+  border-radius: var(--radius-card);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 48rpx;
+}

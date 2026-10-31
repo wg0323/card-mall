@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "核销码",
+  "navigationBarBackgroundColor": "#0F1513",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#0F1513",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

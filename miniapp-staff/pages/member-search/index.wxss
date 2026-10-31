@@ -1,0 +1,112 @@
+.search-bar {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+  padding: 8rpx 12rpx 8rpx 28rpx;
+  margin-bottom: 24rpx;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  font-size: 28rpx;
+}
+
+/* 清空按钮：72rpx 热区包住 40rpx 图标，点按不误触输入框 */
+.search-clear {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.search-clear--hover {
+  opacity: 0.6;
+}
+
+.member-head {
+  display: flex;
+  gap: 24rpx;
+  align-items: center;
+}
+
+.member-avatar {
+  flex: none;
+  display: block;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+/* 没有头像时用昵称首字占位 */
+.member-avatar-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.member-row-right {
+  display: flex;
+  gap: 8rpx;
+  align-items: center;
+}
+
+/* 会员卡片可点，带一档按下反馈 */
+.card-hover {
+  opacity: 0.85;
+}
+
+.member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.member-name {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.times-row {
+  display: flex;
+  align-items: baseline;
+  margin: 12rpx 0 4rpx;
+}
+
+.times-value {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.times-unit {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}

@@ -1,0 +1,33 @@
+/* 设计文档第 11 节的小程序 token，页面里禁止再写十六进制色值 */
+page {
+  --brand: #16705a;
+  --brand-hover: #125c4a;
+  --brand-deep: #0e4f40;
+  --brand-light: #e8f3ef;
+  --brand-muted: #b9d6cd;
+  --gold: #c8a45c;
+  --gold-line: rgb(200 164 92 / 30%);
+  --gold-light: #f7f0e1;
+  --success: #12b76a;
+  --warning: #f79009;
+  --danger: #f04438;
+  --text-1: #1a1d1f;
+  --text-2: #4a5056;
+  --text-3: #8a9199;
+  --line: #e7e9ec;
+  --fill: #f5f6f7;
+  --surface: #fff;
+  --dark-bg: #0f1513;
+  --radius-card: 24rpx;
+  --radius-pill: 999rpx;
+  --shadow-card: 0 4rpx 16rpx rgb(16 24 40 / 6%);
+
+  /* TDesign 主题覆盖：不覆盖时主按钮会用 TDesign 默认蓝 #0052D9 */
+  --td-brand-color: var(--brand);
+  --td-brand-color-hover: var(--brand-hover);
+  --td-brand-color-active: var(--brand-hover);
+  --td-brand-color-focus: var(--brand-muted);
+  --td-brand-color-disabled: var(--brand-muted);
+  --td-brand-color-light: var(--brand-light);
+  --td-brand-color-light-active: var(--brand-light);
+}

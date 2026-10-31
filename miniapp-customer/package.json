@@ -1,0 +1,13 @@
+{
+  "name": "card-mall-customer-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "次卡商城客户小程序（微信原生 + TDesign）",
+  "dependencies": {
+    "tdesign-miniprogram": "^1.17.0",
+    "weapp-qrcode-canvas-2d": "^1.1.6"
+  },
+  "devDependencies": {
+    "miniprogram-automator": "^0.13.0"
+  }
+}

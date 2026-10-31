@@ -1,0 +1,79 @@
+.tabs {
+  display: flex;
+  gap: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 24rpx;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+}
+
+.tab {
+  flex: 1;
+  height: 72rpx;
+  font-size: 26rpx;
+  line-height: 72rpx;
+  color: var(--text-2);
+  text-align: center;
+  border-radius: var(--radius-pill);
+}
+
+.tab-active {
+  color: var(--surface);
+  background: var(--brand);
+}
+
+.card-item {
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card-hover {
+  opacity: 0.85;
+}
+
+.item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.item-times {
+  display: flex;
+  align-items: baseline;
+  margin: 16rpx 0 8rpx;
+}
+
+.times-value {
+  font-size: 64rpx;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.times-unit {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.item-valid {
+  font-size: 22rpx;
+}
+
+.empty-btn {
+  display: inline-block;
+  padding: 16rpx 48rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+  border: 1rpx solid var(--brand);
+  border-radius: var(--radius-pill);
+}

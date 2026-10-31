@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="profile">
+    <view class="avatar-wrap">
+      <image class="avatar" wx:if="{{avatar}}" src="{{avatar}}" mode="aspectFill" />
+      <view class="avatar avatar-text" wx:else>{{name[0]}}</view>
+      <!-- 原生 button 的盒子尺寸不受控，只让它做一层透明可点区域，圆形交给上面的 view 画 -->
+      <button
+        class="avatar-hit"
+        open-type="chooseAvatar"
+        hover-class="none"
+        bind:chooseavatar="onChooseAvatar"
+      ></button>
+    </view>
+    <view class="profile-info">
+      <text class="profile-name">{{name}}</text>
+      <text class="profile-role">{{roleText}}</text>
+    </view>
+  </view>
+
+  <view class="card menu">
+    <t-cell-group>
+      <t-cell title="所属门店" description="{{storeName || '暂未获取'}}" />
+    </t-cell-group>
+  </view>
+
+  <view class="card menu">
+    <t-cell-group>
+      <t-cell title="退出登录" hover bind:click="logout" />
+    </t-cell-group>
+  </view>
+
+  <text class="brand-note">核销操作会实时记入后台，请按实际消费扣次</text>
+</view>

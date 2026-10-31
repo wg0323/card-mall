@@ -1,0 +1,12 @@
+{
+  "name": "card-mall-staff-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "次卡商城商家小程序（微信原生 + TDesign）",
+  "dependencies": {
+    "tdesign-miniprogram": "^1.17.0"
+  },
+  "devDependencies": {
+    "miniprogram-automator": "^0.13.0"
+  }
+}

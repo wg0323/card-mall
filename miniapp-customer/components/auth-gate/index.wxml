@@ -1,0 +1,15 @@
+<view class="gate">
+  <view class="gate-avatar">卡</view>
+  <text class="gate-title">需要授权手机号</text>
+  <text class="gate-desc">核销、售后与到店查询都要用手机号联系你，未授权无法使用本小程序</text>
+  <button
+    class="gate-btn"
+    open-type="getPhoneNumber"
+    bindgetphonenumber="onGetPhone"
+    loading="{{binding}}"
+    disabled="{{binding}}"
+  >
+    授权手机号并继续
+  </button>
+  <text class="gate-hint">仅用于门店服务，不会对外展示</text>
+</view>

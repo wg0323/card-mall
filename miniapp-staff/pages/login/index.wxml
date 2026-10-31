@@ -1,0 +1,47 @@
+<view class="screen">
+  <view class="brand">
+    <text class="brand-name">{{brandName}}</text>
+    <text class="brand-sub">店员工作台</text>
+  </view>
+
+  <view class="form">
+    <view class="field">
+      <text class="field-label">手机号</text>
+      <input
+        class="field-input"
+        type="number"
+        maxlength="11"
+        placeholder="请输入登录手机号"
+        value="{{phone}}"
+        data-field="phone"
+        bindinput="onInput"
+      />
+    </view>
+    <view class="field">
+      <text class="field-label">密码</text>
+      <input
+        class="field-input"
+        password
+        maxlength="20"
+        placeholder="请输入密码"
+        value="{{password}}"
+        data-field="password"
+        bindinput="onInput"
+        bindconfirm="submit"
+      />
+    </view>
+  </view>
+
+  <t-button
+    theme="primary"
+    size="large"
+    block="{{true}}"
+    loading="{{submitting}}"
+    disabled="{{!phone || !password}}"
+    bind:tap="submit"
+  >
+    登录
+  </t-button>
+
+  <text class="tip">忘记密码请联系店长重置</text>
+</view>

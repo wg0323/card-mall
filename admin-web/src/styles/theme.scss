@@ -1,0 +1,103 @@
+// 设计文档第 11 节的 token，页面里禁止再写十六进制色值
+:root {
+  --brand: #16705a;
+  --brand-hover: #125c4a;
+  --brand-light: #e8f3ef;
+  --gold: #c8a45c;
+  --gold-light: #f7f0e1;
+  --success: #12b76a;
+  --warning: #f79009;
+  --danger: #f04438;
+  --text-1: #1a1d1f;
+  --text-2: #4a5056;
+  --text-3: #8a9199;
+  --line: #e7e9ec;
+  --fill: #f5f6f7;
+  --dark-sidebar: #0f2e27;
+
+  --el-color-primary: #16705a;
+  --el-color-primary-light-3: #5d9a8a;
+  --el-color-primary-light-5: #8bb8ab;
+  --el-color-primary-light-7: #b9d6cd;
+  --el-color-primary-light-8: #d1e5df;
+  --el-color-primary-light-9: #e8f3ef;
+  --el-color-primary-dark-2: #125c4a;
+  --el-color-success: #12b76a;
+  --el-color-warning: #f79009;
+  --el-color-danger: #f04438;
+  --el-text-color-primary: #1a1d1f;
+  --el-text-color-regular: #4a5056;
+  --el-text-color-placeholder: #8a9199;
+  --el-border-color-light: #e7e9ec;
+  --el-fill-color-light: #f5f6f7;
+  --el-border-radius-base: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text-1);
+  background: var(--fill);
+}
+
+// 金额与次数用等宽数字，避免刷新时宽度抖动
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+// 后台内容区卡片：白底 + 12px 圆角 + 一档阴影
+.panel {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgb(16 24 40 / 8%);
+}
+
+.panel + .panel {
+  margin-top: 16px;
+}
+
+.panel-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+// 页面标题交给顶栏面包屑，这里只放右侧操作区
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+// 筛选区输入框：EP 默认描边 #dcdfe6 在 #f5f6f7 上对比只有 1.1:1，
+// 抗锯齿后边界几乎消失，看着比旁边的实心按钮矮一截；加深一档让边界和按钮一样明确
+.filters .el-input__wrapper:not(.is-focus),
+.filters .el-select__wrapper:not(.is-focus) {
+  box-shadow: 0 0 0 1px rgb(138 145 153 / 35%) inset;
+}
+
+// 筛选区控件高度统一，不靠 EP 默认 size 继承
+.filters .el-input__wrapper,
+.filters .el-select__wrapper,
+.filters .el-button {
+  height: 32px;
+}
+
+// 实心深色块在浅底上会「光渗膨胀」，同尺寸看着比描边框高 1~2px；
+// 主按钮收 2px 做视觉补偿，热区仍够点
+.filters .el-button--primary {
+  height: 30px;
+}

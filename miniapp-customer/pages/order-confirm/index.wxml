@@ -1,0 +1,42 @@
+<view class="page" wx:if="{{product}}">
+  <view class="card">
+    <view class="info-head">
+      <text class="card-title">{{product.name}}</text>
+      <text class="price info-price">¥{{product.price}}</text>
+    </view>
+    <view class="info-row">
+      <text class="muted">{{product.cardType === 1 ? '可用次数' : '有效天数'}}</text>
+      <text>{{product.cardType === 1 ? product.totalTimes + ' 次' : product.validDays + ' 天'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="muted">手机号</text>
+      <text wx:if="{{member.phone}}">{{member.phone}}</text>
+      <button
+        wx:else
+        class="phone-btn"
+        open-type="getPhoneNumber"
+        bindgetphonenumber="onGetPhone"
+        loading="{{binding}}"
+      >
+        点击授权
+      </button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="info-row">
+      <text class="muted">支付金额</text>
+      <text class="price info-price">¥{{product.price}}</text>
+    </view>
+  </view>
+
+  <view class="agree" bindtap="toggleAgree">
+    <t-icon name="{{agreed ? 'check-circle-filled' : 'circle'}}" size="36rpx" color="{{agreed ? 'var(--brand)' : 'var(--text-3)'}}" />
+    <text class="agree-text">我已阅读并同意购买须知，核销后按门店规则计算退款</text>
+  </view>
+
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <t-button theme="primary" size="large" block loading="{{submitting}}" bind:tap="pay">确认支付</t-button>
+  </view>
+</view>

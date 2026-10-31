@@ -1,0 +1,18 @@
+<view class="page">
+  <view class="order-item" hover-class="item-hover" wx:for="{{list}}" wx:key="orderNo" data-order-no="{{item.orderNo}}" bindtap="goDetail">
+    <view class="item-head">
+      <text class="item-name">{{item.productName}}</text>
+      <t-tag size="small" theme="{{item.payStatusTheme}}" variant="light">{{item.payStatusLabel}}</t-tag>
+    </view>
+    <view class="item-body">
+      <text class="muted">{{item.createTime}}</text>
+      <text class="price item-amount">¥{{item.amountText}}</text>
+    </view>
+  </view>
+
+  <view class="empty-wrap" wx:if="{{!loading && !list.length}}">
+    <t-empty description="还没有订单">
+      <view class="empty-btn" bindtap="goHome">去挑一张卡</view>
+    </t-empty>
+  </view>
+</view>

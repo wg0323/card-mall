@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-store">{{storeName || '门店'}}</text>
+    <text class="hero-sub">店员工作台</text>
+  </view>
+
+  <view class="stat">
+    <view class="stat-item">
+      <text class="stat-value">{{todayVerifyCount}}</text>
+      <text class="stat-label">今日核销</text>
+    </view>
+  </view>
+
+  <view class="scan-btn" hover-class="scan-hover" bindtap="scan">
+    <t-icon name="scan" size="112rpx" color="var(--surface)" />
+    <text class="scan-title">扫码核销</text>
+    <text class="scan-hint">对准顾客出示的核销码</text>
+  </view>
+
+  <view class="actions">
+    <view class="action" hover-class="action-hover" bindtap="manualInput">
+      <t-icon name="qrcode" size="36rpx" color="var(--brand)" />
+      <text>手动输入码</text>
+    </view>
+    <view class="action" hover-class="action-hover" bindtap="goMemberSearch">
+      <t-icon name="user" size="36rpx" color="var(--brand)" />
+      <text>查会员</text>
+    </view>
+  </view>
+</view>

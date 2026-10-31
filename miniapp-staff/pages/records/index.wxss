@@ -1,0 +1,80 @@
+.filters {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  margin-bottom: 16rpx;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.filter {
+  padding: 8rpx 0;
+  font-size: 26rpx;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-on {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.filter-sep {
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.filter-clear {
+  padding: 8rpx 16rpx;
+  margin-left: auto;
+  font-size: 24rpx;
+  color: var(--brand);
+  background: var(--brand-light);
+  border-radius: var(--radius-pill);
+}
+
+.summary {
+  padding: 0 8rpx 16rpx;
+}
+
+.record {
+  padding: 28rpx 32rpx;
+  margin-bottom: 20rpx;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.record-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.record-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 12rpx;
+}
+
+.record-remark {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--text-2);
+}
+
+.more {
+  padding: 24rpx 0 48rpx;
+  font-size: 24rpx;
+  color: var(--text-3);
+  text-align: center;
+}
