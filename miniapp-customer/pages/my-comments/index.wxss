@@ -47,9 +47,18 @@
   border-radius: 8rpx;
 }
 
-.reply-label {
-  display: block;
+.comment-reply--unread {
+  border: 1rpx solid var(--danger);
+}
+
+.reply-head {
+  display: flex;
+  gap: 8rpx;
+  align-items: center;
   margin-bottom: 6rpx;
+}
+
+.reply-label {
   font-size: 24rpx;
   color: var(--brand);
 }

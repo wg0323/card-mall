@@ -3,6 +3,7 @@
  * 作者：card-mall 创建日期：2026-11-01
  */
 import { deleteComment, pageMyComments } from '../../api/commentApi';
+import { markMessageRead } from '../../api/messageApi';
 import { requireLogin } from '../../utils/auth';
 import { decorateMyComment } from '../../utils/dict';
 
@@ -52,11 +53,25 @@ Page({
       });
       this.pageNum = pageNum + 1;
       this.hasMore = merged.length < (page?.total ?? 0);
+      this.markRead(list);
     } catch (error) {
       this.setData({ loading: false });
       this.hasMore = false;
     } finally {
       this.loading = false;
+    }
+  },
+
+  // 列表已经展示给用户，本页新拉到的未读评论直接标记已读；只传这一页，避免误清其他消息
+  async markRead(list) {
+    const unreadIds = list.filter((item) => item.unread).map((item) => item.id);
+    if (!unreadIds.length) {
+      return;
+    }
+    try {
+      await markMessageRead(unreadIds);
+    } catch (error) {
+      // 请求层已提示；标记失败不影响展示，下次进页面会重试
     }
   },
 
