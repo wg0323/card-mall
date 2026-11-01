@@ -28,15 +28,28 @@
       <text class="row-label">下单时间</text>
       <text class="row-value">{{order.createTime}}</text>
     </view>
+    <view class="row" wx:if="{{order.payStatus === 1}}">
+      <text class="row-label">评论</text>
+      <text class="row-value">{{commentLoading ? '检查中' : (canComment ? '可发表评论' : '已评论')}}</text>
+    </view>
   </view>
 
   <view class="footer-placeholder"></view>
-  <view class="footer-bar">
-    <t-button wx:if="{{order.payStatus === 0}}" theme="primary" size="large" block loading="{{paying}}" bind:tap="continuePay">
+  <view class="footer-bar" wx:if="{{order.payStatus === 0}}">
+    <t-button theme="primary" size="large" block loading="{{paying}}" bind:tap="continuePay">
       继续支付
     </t-button>
-    <t-button wx:elif="{{order.payStatus === 1}}" theme="primary" size="large" block bind:tap="goCards">
-      查看我的卡
+  </view>
+  <view class="footer-bar" wx:elif="{{order.payStatus === 1}}">
+    <t-button theme="default" size="large" block bind:tap="goCards">查看我的卡</t-button>
+    <t-button
+      theme="primary"
+      size="large"
+      block
+      disabled="{{commentLoading}}"
+      bind:tap="goComment"
+    >
+      {{commentLoading ? '检查中' : (canComment ? '去评论' : '查看评论')}}
     </t-button>
   </view>
 </view>

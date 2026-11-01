@@ -87,6 +87,10 @@ Page({
     wx.navigateTo({ url: '/pages/orders/index' });
   },
 
+  goMyComments() {
+    wx.navigateTo({ url: '/pages/my-comments/index' });
+  },
+
   async callStore() {
     try {
       const home = await getHome();

@@ -1,0 +1,86 @@
+.content-input {
+  width: 100%;
+  height: 240rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: var(--text-1);
+}
+
+.content-placeholder {
+  color: var(--text-3);
+}
+
+.content-count {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+  text-align: right;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.image-item,
+.image-add {
+  position: relative;
+  width: 190rpx;
+  height: 190rpx;
+  overflow: hidden;
+  border-radius: 8rpx;
+}
+
+.image {
+  display: block;
+  width: 190rpx;
+  height: 190rpx;
+}
+
+.image-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 44rpx;
+  font-size: 28rpx;
+  color: var(--surface);
+  background: rgb(0 0 0 / 50%);
+  border-bottom-left-radius: 8rpx;
+}
+
+.image-add {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-3);
+  background: var(--fill);
+  border: 1rpx dashed var(--line);
+}
+
+.image-add-icon {
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.image-add-text {
+  font-size: 22rpx;
+}
+
+.image-hint {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+}
+
+.footer-bar t-button {
+  flex: 1;
+}

@@ -154,6 +154,30 @@ export interface AdminMemberVO {
   createTime: string;
 }
 
+export interface AdminCommentVO {
+  id: number;
+  productId: number;
+  productName: string;
+  memberId: number;
+  memberNickname: string;
+  memberAvatar: string;
+  memberPhone: string;
+  content: string;
+  images: string[];
+  status: number;
+  replyContent: string | null;
+  replyTime: string | null;
+  createTime: string;
+}
+
+export interface CommentStatusRequest {
+  status: number;
+}
+
+export interface CommentReplyRequest {
+  replyContent: string;
+}
+
 export interface MemberCardVO {
   id: number;
   cardNo: string;

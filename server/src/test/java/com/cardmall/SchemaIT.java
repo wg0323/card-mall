@@ -18,13 +18,13 @@ class SchemaIT {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void flyway_creates_eight_tables() {
+    void flyway_creates_nine_tables() {
         List<String> tables = jdbcTemplate.queryForList(
                 "select table_name from information_schema.tables where table_schema = database()",
                 String.class);
         assertThat(tables).contains(
                 "store", "staff", "member_info", "card_product",
-                "card_order", "pay_transaction", "member_card", "verify_record");
+                "card_order", "pay_transaction", "member_card", "verify_record", "card_comment");
     }
 
     @Test
@@ -40,6 +40,15 @@ class SchemaIT {
     void main_store_is_seeded_with_id_one() {
         Long id = jdbcTemplate.queryForObject("select id from store where id = 1", Long.class);
         assertThat(id).isEqualTo(1L);
+    }
+
+    @Test
+    void card_comment_has_order_unique_index() {
+        Long cnt = jdbcTemplate.queryForObject(
+                "select count(*) from information_schema.statistics "
+                        + "where table_schema = database() and table_name = 'card_comment' "
+                        + "and index_name = 'uk_order_no'", Long.class);
+        assertThat(cnt).isEqualTo(1L);
     }
 
     @Test

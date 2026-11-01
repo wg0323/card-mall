@@ -110,6 +110,9 @@ export const http = {
   put<T>(url: string, data?: unknown, params?: Record<string, unknown>): Promise<T> {
     return instance.put(url, data, { params }) as unknown as Promise<T>;
   },
+  delete<T>(url: string): Promise<T> {
+    return instance.delete(url) as unknown as Promise<T>;
+  },
   // 图片上传单独放宽超时：5MB 图片走本地网络也可能超过默认的 10s
   upload<T>(url: string, file: File): Promise<T> {
     const form = new FormData();

@@ -13,6 +13,8 @@ public final class ErrorCode {
     public static final int CARD_NOT_USABLE = 1101;
     public static final int ORDER_NOT_FOUND = 1102;
     public static final int ORDER_STATUS_INVALID = 1103;
+    public static final int COMMENT_NOT_ELIGIBLE = 1104;
+    public static final int COMMENT_NOT_FOUND = 1105;
 
     public static final int STAFF_UNAUTHORIZED = 2000;
     public static final int VERIFY_CODE_INVALID = 2001;

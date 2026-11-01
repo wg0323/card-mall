@@ -1,0 +1,90 @@
+.comment-card {
+  padding: 24rpx 32rpx;
+}
+
+.item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 30rpx;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comment-content {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: var(--text-1);
+  word-break: break-word;
+}
+
+.comment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.comment-image {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 8rpx;
+}
+
+.comment-reply {
+  padding: 16rpx;
+  margin-top: 16rpx;
+  background: var(--brand-light);
+  border-radius: 8rpx;
+}
+
+.reply-label {
+  display: block;
+  margin-bottom: 6rpx;
+  font-size: 24rpx;
+  color: var(--brand);
+}
+
+.reply-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: var(--text-2);
+  word-break: break-word;
+}
+
+.item-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.comment-time {
+  font-size: 22rpx;
+  color: var(--text-3);
+}
+
+.delete-link {
+  padding: 16rpx 0 16rpx 24rpx;
+  font-size: 26rpx;
+  color: var(--danger);
+}
+
+.empty-btn {
+  display: inline-block;
+  padding: 16rpx 48rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+  border: 1rpx solid var(--brand);
+  border-radius: var(--radius-pill);
+}

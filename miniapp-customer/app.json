@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/detail/index",
+    "pages/comments/index",
+    "pages/comment-edit/index",
     "pages/order-confirm/index",
     "pages/pay-result/index",
     "pages/cards/index",
@@ -9,6 +11,7 @@
     "pages/verify-code/index",
     "pages/orders/index",
     "pages/order-detail/index",
+    "pages/my-comments/index",
     "pages/profile/index"
   ],
   "window": {

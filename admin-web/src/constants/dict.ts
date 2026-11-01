@@ -42,6 +42,12 @@ export const VERIFY_STATUS: Record<number, DictItem> = {
   2: { label: '已撤销', type: 'danger' },
 };
 
+export const COMMENT_STATUS: Record<number, DictItem> = {
+  1: { label: '显示中', type: 'success' },
+  2: { label: '已屏蔽', type: 'warning' },
+  3: { label: '已删除', type: 'info' },
+};
+
 export const STAFF_ROLE: Record<number, string> = {
   1: '老板',
   2: '店长',

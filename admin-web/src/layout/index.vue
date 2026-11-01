@@ -5,6 +5,7 @@ import { ElMessage, ElMessageBox, type FormInstance, type FormRules } from 'elem
 import {
   ArrowDown,
   Avatar,
+  ChatDotRound,
   Checked,
   Document,
   Expand,
@@ -29,6 +30,7 @@ const menus = [
   { path: '/product', label: '卡产品', icon: Postcard },
   { path: '/member', label: '会员', icon: User },
   { path: '/order', label: '订单', icon: Document },
+  { path: '/comment', label: '评论管理', icon: ChatDotRound },
   { path: '/verify', label: '核销记录', icon: Checked },
   { path: '/staff', label: '员工', icon: Avatar },
   { path: '/store', label: '门店设置', icon: Setting },

@@ -16,11 +16,18 @@ const PAY_STATUS = {
   3: { label: '已退款', theme: 'danger' },
 };
 
+const COMMENT_STATUS = {
+  1: { label: '显示中', theme: 'success' },
+  2: { label: '已屏蔽', theme: 'warning' },
+};
+
 const fallback = { label: '-', theme: 'default' };
 
 export const cardStatusOf = (status) => MEMBER_CARD_STATUS[status] ?? fallback;
 
 export const payStatusOf = (status) => PAY_STATUS[status] ?? fallback;
+
+export const commentStatusOf = (status) => COMMENT_STATUS[status] ?? fallback;
 
 // WXML 里不能调用函数，列表数据统一在这里补好展示字段
 export const decorateCard = (card) => {
@@ -42,5 +49,14 @@ export const decorateOrder = (order) => {
     payStatusLabel: status.label,
     payStatusTheme: status.theme,
     amountText: Number(order.amount ?? 0).toFixed(2),
+  };
+};
+
+export const decorateMyComment = (comment) => {
+  const status = commentStatusOf(comment.status);
+  return {
+    ...comment,
+    statusLabel: status.label,
+    statusTheme: status.theme,
   };
 };

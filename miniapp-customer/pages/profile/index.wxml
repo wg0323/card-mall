@@ -29,6 +29,7 @@
     <t-cell-group>
       <t-cell title="我的卡包" arrow hover bind:click="goCards" />
       <t-cell title="我的订单" arrow hover bind:click="goOrders" />
+      <t-cell title="我的评论" arrow hover bind:click="goMyComments" />
       <t-cell title="联系门店" arrow hover bind:click="callStore" />
     </t-cell-group>
   </view>

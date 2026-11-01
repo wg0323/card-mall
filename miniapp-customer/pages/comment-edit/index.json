@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "写评论",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

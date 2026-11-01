@@ -1,0 +1,111 @@
+.summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8rpx 8rpx 24rpx;
+}
+
+.summary-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.summary-total {
+  font-size: 24rpx;
+  color: var(--text-3);
+}
+
+.comment-card {
+  padding: 24rpx 32rpx;
+}
+
+.comment-head {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.comment-avatar {
+  display: block;
+  flex: none;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
+.comment-avatar-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.comment-meta {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.comment-name {
+  overflow: hidden;
+  font-size: 28rpx;
+  color: var(--text-1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comment-time {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+}
+
+.comment-content {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: var(--text-1);
+  word-break: break-word;
+}
+
+.comment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.comment-image {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 8rpx;
+}
+
+.comment-reply {
+  padding: 16rpx;
+  margin-top: 16rpx;
+  background: var(--brand-light);
+  border-radius: 8rpx;
+}
+
+.reply-label {
+  display: block;
+  margin-bottom: 6rpx;
+  font-size: 24rpx;
+  color: var(--brand);
+}
+
+.reply-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: var(--text-2);
+  word-break: break-word;
+}
+
+.footer-bar t-button {
+  flex: 1;
+}

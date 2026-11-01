@@ -26,11 +26,76 @@
       <text class="row-label">状态</text>
       <text class="row-value">{{product.status === 1 ? '在售' : '已售罄'}}</text>
     </view>
+    <view class="row" hover-class="row-hover" bindtap="goComments">
+      <text class="row-label">用户评论</text>
+      <text class="row-value">{{commentTotal}} 条 ›</text>
+    </view>
   </view>
 
   <view class="card" wx:if="{{product.purchaseNotice}}">
     <text class="card-title">购买须知</text>
     <text class="notice">{{product.purchaseNotice}}</text>
+  </view>
+
+  <view class="card comments">
+    <view class="comments-head">
+      <text class="card-title">用户评论（{{commentTotal}}）</text>
+      <text
+        class="comments-write {{canComment ? '' : 'comments-write-disabled'}}"
+        bindtap="goCommentEdit"
+      >
+        {{canComment ? '写评论' : '购买后可评论'}}
+      </text>
+    </view>
+
+    <view
+      class="comment-item"
+      wx:for="{{comments}}"
+      wx:key="id"
+      wx:for-index="commentIndex"
+    >
+      <view class="comment-head">
+        <image
+          class="comment-avatar"
+          wx:if="{{item.memberAvatar}}"
+          src="{{item.memberAvatar}}"
+          mode="aspectFill"
+        />
+        <view class="comment-avatar comment-avatar-default" wx:else>
+          {{item.memberNickname ? item.memberNickname[0] : '客'}}
+        </view>
+        <view class="comment-meta">
+          <text class="comment-name">{{item.memberNickname || '微信用户'}}</text>
+          <text class="comment-time">{{item.createTime}}</text>
+        </view>
+      </view>
+      <text class="comment-content">{{item.content}}</text>
+      <view class="comment-images" wx:if="{{item.images.length}}">
+        <image
+          class="comment-image"
+          wx:for="{{item.images}}"
+          wx:key="*this"
+          wx:for-index="imageIndex"
+          src="{{item}}"
+          mode="aspectFill"
+          data-comment-index="{{commentIndex}}"
+          data-image-index="{{imageIndex}}"
+          bindtap="previewCommentImage"
+        />
+      </view>
+      <view class="comment-reply" wx:if="{{item.replyContent}}">
+        <text class="reply-label">店长回复</text>
+        <text class="reply-content">{{item.replyContent}}</text>
+      </view>
+    </view>
+
+    <view class="comments-empty" wx:if="{{!commentsLoading && !comments.length}}">
+      <text class="muted">暂无评论，购买后可发表第一条</text>
+    </view>
+
+    <view class="comments-more" wx:if="{{commentTotal > comments.length}}" bindtap="goComments">
+      查看全部 {{commentTotal}} 条评论
+    </view>
   </view>
 
   <view class="footer-placeholder"></view>

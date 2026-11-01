@@ -47,6 +47,10 @@
   text-align: right;
 }
 
+.row-hover {
+  opacity: 0.7;
+}
+
 .notice {
   display: block;
   margin-top: 16rpx;
@@ -57,4 +61,128 @@
 
 .footer-bar t-button {
   flex: 1;
+}
+
+.comments-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comments-write {
+  padding: 24rpx 0 24rpx 24rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+}
+
+.comments-write-disabled {
+  color: var(--text-3);
+}
+
+.comment-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-head {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.comment-avatar {
+  display: block;
+  flex: none;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
+.comment-avatar-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.comment-meta {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.comment-name {
+  overflow: hidden;
+  font-size: 28rpx;
+  color: var(--text-1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comment-time {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: var(--text-3);
+}
+
+.comment-content {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: var(--text-1);
+  word-break: break-word;
+}
+
+.comment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.comment-image {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 8rpx;
+}
+
+.comment-reply {
+  padding: 16rpx;
+  margin-top: 16rpx;
+  background: var(--brand-light);
+  border-radius: 8rpx;
+}
+
+.reply-label {
+  display: block;
+  margin-bottom: 6rpx;
+  font-size: 24rpx;
+  color: var(--brand);
+}
+
+.reply-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: var(--text-2);
+  word-break: break-word;
+}
+
+.comments-empty {
+  padding: 32rpx 0;
+  text-align: center;
+}
+
+.comments-more {
+  padding: 24rpx 0 8rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+  text-align: center;
 }

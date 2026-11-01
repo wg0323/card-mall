@@ -18,3 +18,7 @@
   max-width: 65%;
   text-align: right;
 }
+
+.footer-bar t-button {
+  flex: 1;
+}

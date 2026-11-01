@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="card comment-card" wx:for="{{list}}" wx:key="id" wx:for-index="commentIndex">
+    <view class="item-head">
+      <text class="item-name">{{item.productName}}</text>
+      <t-tag size="small" theme="{{item.statusTheme}}" variant="light">{{item.statusLabel}}</t-tag>
+    </view>
+    <text class="comment-content">{{item.content}}</text>
+    <view class="comment-images" wx:if="{{item.images.length}}">
+      <image
+        class="comment-image"
+        wx:for="{{item.images}}"
+        wx:key="*this"
+        wx:for-index="imageIndex"
+        src="{{item}}"
+        mode="aspectFill"
+        data-comment-index="{{commentIndex}}"
+        data-image-index="{{imageIndex}}"
+        bindtap="previewImage"
+      />
+    </view>
+    <view class="comment-reply" wx:if="{{item.replyContent}}">
+      <text class="reply-label">店长回复</text>
+      <text class="reply-content">{{item.replyContent}}</text>
+    </view>
+    <view class="item-foot">
+      <text class="comment-time">{{item.createTime}}</text>
+      <text class="delete-link" data-id="{{item.id}}" bindtap="remove">删除</text>
+    </view>
+  </view>
+
+  <view class="empty-wrap" wx:if="{{!loading && !list.length}}">
+    <t-empty description="还没有评论">
+      <view class="empty-btn" bindtap="goHome">去挑一张卡</view>
+    </t-empty>
+  </view>
+</view>

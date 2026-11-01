@@ -32,9 +32,10 @@
   "miniprogramRoot": "./",
   "compileType": "miniprogram",
   "libVersion": "2.32.3",
-  "appid": "touristappid",
+  "appid": "wxa4bcf3ff846e14d3",
   "projectname": "card-mall-customer",
   "condition": {},
   "simulatorPluginLibVersion": {},
-  "editorSetting": {}
+  "editorSetting": {},
+  "isGameTourist": false
 }

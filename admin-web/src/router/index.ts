@@ -48,6 +48,12 @@ const router = createRouter({
           meta: { title: '订单' },
         },
         {
+          path: 'comment',
+          name: 'comment',
+          component: () => import('@/views/comment/index.vue'),
+          meta: { title: '评论管理' },
+        },
+        {
           path: 'verify',
           name: 'verify',
           component: () => import('@/views/verify/index.vue'),
