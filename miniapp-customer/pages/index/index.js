@@ -29,6 +29,7 @@ Page({
     const tabBar = typeof this.getTabBar === 'function' ? this.getTabBar() : null;
     if (tabBar) {
       tabBar.setData({ value: '/pages/index/index' });
+      tabBar.refreshBadge();
     }
     // 停留期间可能跨过营业时间点，每次显示按当前时间重算
     if (this.data.store) {

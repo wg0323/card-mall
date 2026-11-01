@@ -4,6 +4,7 @@
  */
 import { getProfile, updateProfile, uploadAvatar } from '../../api/memberApi';
 import { getHome } from '../../api/homeApi';
+import { getUnreadCount } from '../../api/messageApi';
 import { hasToken } from '../../utils/auth';
 import { clearPhoneAuthRequired, isPhoneAuthRequired } from '../../utils/request';
 import { BRAND_NAME } from '../../config/index';
@@ -14,6 +15,7 @@ Page({
     member: null,
     avatarUploading: false,
     needPhone: false,
+    commentNote: '',
   },
 
   onShow() {
@@ -35,6 +37,7 @@ Page({
       const member = await getProfile();
       // refresh 过期或未绑手机号都要重新授权
       this.setData({ member, needPhone: isPhoneAuthRequired() || !member?.phone });
+      this.loadUnreadCount();
     } catch (error) {
       // 请求层已提示
     }
@@ -44,6 +47,21 @@ Page({
     clearPhoneAuthRequired();
     this.setData({ needPhone: false });
     this.loadData();
+  },
+
+  // 角标与入口文案共用一个请求结果，避免同一次 onShow 发两次
+  async loadUnreadCount() {
+    try {
+      const count = await getUnreadCount();
+      const unread = Number(count ?? 0);
+      this.setData({ commentNote: unread > 0 ? `${unread} 条新回复` : '' });
+      const tabBar = typeof this.getTabBar === 'function' ? this.getTabBar() : null;
+      if (tabBar) {
+        tabBar.refreshBadge(unread);
+      }
+    } catch (error) {
+      // 请求层已提示
+    }
   },
 
   // 头像只能由用户自己选：选完直接上传并保存，不再单独确认

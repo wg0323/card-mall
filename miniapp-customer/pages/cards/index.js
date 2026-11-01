@@ -27,6 +27,7 @@ Page({
     const tabBar = typeof this.getTabBar === 'function' ? this.getTabBar() : null;
     if (tabBar) {
       tabBar.setData({ value: '/pages/cards/index' });
+      tabBar.refreshBadge();
     }
     this.checkPhone();
     // 从核销页返回时余次可能已变，每次显示都刷新
