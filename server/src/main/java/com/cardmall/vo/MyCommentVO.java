@@ -34,6 +34,9 @@ public class MyCommentVO {
     @Schema(description = "店长回复时间")
     private LocalDateTime replyTime;
 
+    @Schema(description = "店长回复是否有未读提醒")
+    private Boolean unread;
+
     @Schema(description = "评论时间")
     private LocalDateTime createTime;
 }

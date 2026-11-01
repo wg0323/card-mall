@@ -299,6 +299,30 @@ class CommentIT {
                 .andExpect(jsonPath("$.data").value(1));
     }
 
+    @Test
+    void my_comment_page_exposes_unread_flag() throws Exception {
+        Long productId = insertProduct("洗车5次卡");
+        String token = memberToken("comment-message-unread-flag");
+        createPaidOrder(token, productId);
+        Long commentId = createComment(token, productId, "服务很好", "");
+
+        mockMvc.perform(get("/api/app/comment/mine/page").header("Authorization", token))
+                .andExpect(jsonPath("$.data.list[0].unread").value(false));
+
+        replyComment(commentId, "感谢支持");
+
+        mockMvc.perform(get("/api/app/comment/mine/page").header("Authorization", token))
+                .andExpect(jsonPath("$.data.list[0].unread").value(true));
+
+        mockMvc.perform(put("/api/app/message/read").header("Authorization", token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"commentIds\":[" + commentId + "]}"))
+                .andExpect(jsonPath("$.code").value(0));
+
+        mockMvc.perform(get("/api/app/comment/mine/page").header("Authorization", token))
+                .andExpect(jsonPath("$.data.list[0].unread").value(false));
+    }
+
     // ---------- helpers ----------
 
     private Long insertProduct(String name) {

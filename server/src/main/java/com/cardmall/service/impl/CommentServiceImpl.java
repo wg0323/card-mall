@@ -29,8 +29,10 @@ import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -113,7 +115,15 @@ public class CommentServiceImpl extends ServiceImpl<CardCommentMapper, CardComme
                         .eq("member_id", memberId)
                         .ne("status", CardComment.STATUS_DELETED)
                         .orderByDesc("create_time").orderByDesc("id"));
-        return PageResult.of(result.getRecords(), result.getTotal()).convert(CommentConverter::toMyVO);
+        List<CardComment> records = result.getRecords();
+        List<Long> ids = new ArrayList<Long>();
+        for (CardComment comment : records) {
+            ids.add(comment.getId());
+        }
+        // 未读状态一次 in 查完，避免逐条查消息表
+        Set<Long> unreadIds = new HashSet<Long>(messageService.listUnreadCommentIds(memberId, ids));
+        return PageResult.of(records, result.getTotal())
+                .convert(comment -> CommentConverter.toMyVO(comment, unreadIds.contains(comment.getId())));
     }
 
     @Override

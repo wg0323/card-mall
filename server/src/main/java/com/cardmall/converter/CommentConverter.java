@@ -35,7 +35,7 @@ public final class CommentConverter {
         return vo;
     }
 
-    public static MyCommentVO toMyVO(CardComment comment) {
+    public static MyCommentVO toMyVO(CardComment comment, boolean unread) {
         if (comment == null) {
             return null;
         }
@@ -48,6 +48,7 @@ public final class CommentConverter {
         vo.setStatus(comment.getStatus());
         vo.setReplyContent(comment.getReplyContent());
         vo.setReplyTime(comment.getReplyTime());
+        vo.setUnread(unread);
         vo.setCreateTime(comment.getCreateTime());
         return vo;
     }
