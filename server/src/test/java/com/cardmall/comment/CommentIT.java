@@ -276,6 +276,29 @@ class CommentIT {
                 .andExpect(jsonPath("$.data").value(1));
     }
 
+    @Test
+    void repeat_reply_keeps_single_message_and_clearing_creates_none() throws Exception {
+        Long productId = insertProduct("洗车5次卡");
+        String token = memberToken("comment-message-idempotent");
+        createPaidOrder(token, productId);
+        Long commentId = createComment(token, productId, "服务很好", "");
+
+        // 从没回复过，直接清空：不产生消息
+        replyComment(commentId, "");
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", token))
+                .andExpect(jsonPath("$.data").value(0));
+
+        replyComment(commentId, "感谢支持");
+        replyComment(commentId, "感谢支持，欢迎再来");
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", token))
+                .andExpect(jsonPath("$.data").value(1));
+
+        // 清空回复不会删掉已经产生的消息，也不会新增
+        replyComment(commentId, "");
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", token))
+                .andExpect(jsonPath("$.data").value(1));
+    }
+
     // ---------- helpers ----------
 
     private Long insertProduct(String name) {

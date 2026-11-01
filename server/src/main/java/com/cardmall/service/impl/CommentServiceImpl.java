@@ -18,6 +18,7 @@ import com.cardmall.mapper.CardOrderMapper;
 import com.cardmall.service.CardProductService;
 import com.cardmall.service.CommentService;
 import com.cardmall.service.MemberService;
+import com.cardmall.service.MessageService;
 import com.cardmall.vo.AdminCommentVO;
 import com.cardmall.vo.CommentVO;
 import com.cardmall.vo.MyCommentVO;
@@ -48,6 +49,8 @@ public class CommentServiceImpl extends ServiceImpl<CardCommentMapper, CardComme
     private final CardProductService cardProductService;
 
     private final MemberService memberService;
+
+    private final MessageService messageService;
 
     @Override
     public PageResult<CommentVO> pageByProduct(Long productId, int pageNum, int pageSize) {
@@ -165,7 +168,7 @@ public class CommentServiceImpl extends ServiceImpl<CardCommentMapper, CardComme
 
     @Override
     public void reply(Long id, Long staffId, String replyContent) {
-        requireNotDeleted(id);
+        CardComment comment = requireNotDeleted(id);
         String content = replyContent == null ? "" : replyContent.trim();
         if (content.length() > MAX_CONTENT_LENGTH) {
             throw new BizException(ErrorCode.PARAM_INVALID, "回复内容最多 500 字");
@@ -177,18 +180,24 @@ public class CommentServiceImpl extends ServiceImpl<CardCommentMapper, CardComme
                     .setSql("reply_content = null, reply_staff_id = null, reply_time = null"));
             return;
         }
+        boolean firstReply = !StringUtils.hasText(comment.getReplyContent());
         baseMapper.update(null, new UpdateWrapper<CardComment>()
                 .eq("id", id)
                 .set("reply_content", content)
                 .set("reply_staff_id", staffId)
                 .set("reply_time", LocalDateTime.now()));
+        if (firstReply) {
+            // 一条评论只提醒一次；清空后再回复由消息表的唯一索引兜底
+            messageService.createCommentReplyMessage(comment.getMemberId(), id, content);
+        }
     }
 
-    private void requireNotDeleted(Long id) {
+    private CardComment requireNotDeleted(Long id) {
         CardComment comment = baseMapper.selectById(id);
         if (comment == null || comment.getStatus() == CardComment.STATUS_DELETED) {
             throw new BizException(ErrorCode.RESOURCE_NOT_FOUND, "评论不存在或已删除");
         }
+        return comment;
     }
 
     private String normalizeContent(String content) {
