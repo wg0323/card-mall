@@ -18,13 +18,14 @@ class SchemaIT {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    void flyway_creates_nine_tables() {
+    void flyway_creates_core_tables() {
         List<String> tables = jdbcTemplate.queryForList(
                 "select table_name from information_schema.tables where table_schema = database()",
                 String.class);
         assertThat(tables).contains(
                 "store", "staff", "member_info", "card_product",
-                "card_order", "pay_transaction", "member_card", "verify_record", "card_comment");
+                "card_order", "pay_transaction", "member_card", "verify_record", "card_comment",
+                "member_message");
     }
 
     @Test
