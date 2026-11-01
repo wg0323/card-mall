@@ -39,6 +39,7 @@ class CommentIT {
 
     @BeforeEach
     void cleanUp() {
+        jdbcTemplate.update("delete from member_message");
         jdbcTemplate.update("delete from card_comment");
         jdbcTemplate.update("delete from verify_record");
         jdbcTemplate.update("delete from member_card");
@@ -234,6 +235,47 @@ class CommentIT {
                 .andExpect(jsonPath("$.code").value(1000));
     }
 
+    @Test
+    void unread_count_reflects_pending_messages_and_read_marks_them_done() throws Exception {
+        String token = memberToken("comment-message");
+        Long memberId = jdbcTemplate.queryForObject(
+                "select id from member_info order by id desc limit 1", Long.class);
+        jdbcTemplate.update("insert into member_message "
+                        + "(member_id, type, title, content, biz_id, is_read) values (?, 1, ?, ?, ?, 0)",
+                memberId, "店长回复了你的评价", "感谢支持", 100L);
+
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", token))
+                .andExpect(jsonPath("$.code").value(0))
+                .andExpect(jsonPath("$.data").value(1));
+
+        mockMvc.perform(put("/api/app/message/read").header("Authorization", token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"commentIds\":[100]}"))
+                .andExpect(jsonPath("$.code").value(0));
+
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", token))
+                .andExpect(jsonPath("$.data").value(0));
+    }
+
+    @Test
+    void read_only_affects_the_member_himself() throws Exception {
+        String ownerToken = memberToken("comment-message-owner");
+        Long ownerId = jdbcTemplate.queryForObject(
+                "select id from member_info order by id desc limit 1", Long.class);
+        jdbcTemplate.update("insert into member_message "
+                        + "(member_id, type, title, content, biz_id, is_read) values (?, 1, ?, ?, ?, 0)",
+                ownerId, "店长回复了你的评价", "感谢支持", 100L);
+
+        String otherToken = memberToken("comment-message-other");
+        mockMvc.perform(put("/api/app/message/read").header("Authorization", otherToken)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"commentIds\":[100]}"))
+                .andExpect(jsonPath("$.code").value(0));
+
+        mockMvc.perform(get("/api/app/message/unread-count").header("Authorization", ownerToken))
+                .andExpect(jsonPath("$.data").value(1));
+    }
+
     // ---------- helpers ----------
 
     private Long insertProduct(String name) {
@@ -300,6 +342,13 @@ class CommentIT {
         String orderPart = orderNo == null ? "" : ",\"orderNo\":\"" + orderNo + "\"";
         return "{\"productId\":" + productId + orderPart + ",\"content\":\"" + content + "\""
                 + imagesFragment + "}";
+    }
+
+    private void replyComment(Long commentId, String content) throws Exception {
+        mockMvc.perform(put("/api/admin/comment/" + commentId + "/reply").header("Authorization", adminToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"replyContent\":\"" + content + "\"}"))
+                .andExpect(jsonPath("$.code").value(0));
     }
 
     private String adminToken() throws Exception {
