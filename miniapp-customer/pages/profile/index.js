@@ -24,7 +24,9 @@ Page({
       tabBar.setData({ value: '/pages/profile/index' });
     }
     wx.setNavigationBarTitle({ title: BRAND_NAME });
+    // 未读数与资料请求互不阻塞，并行拉取
     this.loadData();
+    this.loadUnreadCount();
   },
 
   async loadData() {
@@ -37,7 +39,6 @@ Page({
       const member = await getProfile();
       // refresh 过期或未绑手机号都要重新授权
       this.setData({ member, needPhone: isPhoneAuthRequired() || !member?.phone });
-      this.loadUnreadCount();
     } catch (error) {
       // 请求层已提示
     }
@@ -47,15 +48,31 @@ Page({
     clearPhoneAuthRequired();
     this.setData({ needPhone: false });
     this.loadData();
+    this.loadUnreadCount();
   },
 
   // 角标与入口文案共用一个请求结果，避免同一次 onShow 发两次
   async loadUnreadCount() {
+    const tabBar = typeof this.getTabBar === 'function' ? this.getTabBar() : null;
+    if (!hasToken()) {
+      // 登录态已失效：文案与角标一起清掉，并作废在途请求
+      this.unreadSeq = (this.unreadSeq ?? 0) + 1;
+      this.setData({ commentNote: '' });
+      if (tabBar) {
+        tabBar.refreshBadge(0);
+      }
+      return;
+    }
+    const seq = (this.unreadSeq ?? 0) + 1;
+    this.unreadSeq = seq;
     try {
       const count = await getUnreadCount();
-      const unread = Number(count ?? 0);
+      if (seq !== this.unreadSeq) {
+        // 已有更新的请求发出，丢弃旧结果
+        return;
+      }
+      const unread = Number.isFinite(Number(count)) ? Number(count) : 0;
       this.setData({ commentNote: unread > 0 ? `${unread} 条新回复` : '' });
-      const tabBar = typeof this.getTabBar === 'function' ? this.getTabBar() : null;
       if (tabBar) {
         tabBar.refreshBadge(unread);
       }

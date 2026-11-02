@@ -7,5 +7,7 @@ import { BRAND_NAME } from './config/index';
 App({
   globalData: {
     brandName: BRAND_NAME,
+    // 未读消息数缓存：各 tab 页共用，避免切换时角标闪回旧值
+    unreadCount: 0,
   },
 });
